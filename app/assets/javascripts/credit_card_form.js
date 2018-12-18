@@ -15,7 +15,7 @@ function GetURLParameter(sParam) {
 
 $(document).ready(function () {
     
-  var show_error, stripeResponseHandler, submitHander;
+  var show_error, stripeResponseHandler, submitHandler;
     
 // function to handle the submit of the form and intercept the default event
   submitHandler = function (event) {
@@ -24,7 +24,7 @@ $(document).ready(function () {
     if(Stripe){
       Stripe.card.createToken($form, stripeResponseHandler);
     } else {
-      show_error("Failed to load credit card processing functionality. Please reload the page")
+      show_error("Failed to load credit card processing functionality. Please reload the page");
     }
     return false;
   };
@@ -50,7 +50,7 @@ $(document).ready(function () {
       $form.off('submit');
       $('[data-stripe]').removeProp('required');
     }
-  }
+  };
 // set up plan change event listener #tenant_plan id in the forms for class cc_form
   $("#tenant_plan").on('change', function(event) {
     handlePlanChange($('#tenant_plan :selected').val(), ".cc_form"); 
@@ -71,7 +71,7 @@ $(document).ready(function () {
       token = response.id;
       $form.append($("<input type=\"hidden\" name=\"payment[token]\" />").val(token));
       $("[data-stripe=number]").remove();
-      $("[data-stripe=cvc]").remove();
+      $("[data-stripe=cvv]").remove();
       $("[data-stripe=exp-year]").remove();
       $("[data-stripe=exp-month]").remove();
       $("[data-stripe=label]").remove();

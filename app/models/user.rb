@@ -8,4 +8,8 @@ class User < ApplicationRecord
   
   has_one :member, :dependent => :destroy
   
+  def is_admin?
+    is_admin
+  end
+  
 end

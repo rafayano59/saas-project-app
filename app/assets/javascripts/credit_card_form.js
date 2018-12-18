@@ -11,7 +11,7 @@ function GetURLParameter(sParam) {
       return sParameterName[1];
     }
   } 
-};
+}
 
 $(document).ready(function () {
     

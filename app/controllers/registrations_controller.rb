@@ -47,7 +47,7 @@ class RegistrationsController < Milia::RegistrationsController
           else
             resource.valid?
             log_action( "tenant create failed", @tenant )
-            render :new
+            render :new and return
           end # if .. then .. else no tenant errors
           
           if flash[:error].blank? || flash[:error].empty? #payment successful
@@ -148,7 +148,7 @@ class RegistrationsController < Milia::RegistrationsController
           clean_up_passwords resource
           log_action( "devise: signup user failure", resource )
           set_minimum_password_length
-          prep_signup_view(  @tenant, resource, params[:coupon] )
+          prep_signup_view( @tenant, resource, params[:coupon] )
           respond_with resource
         end
       end
